@@ -1,6 +1,6 @@
 name: Shell Commands
 
-on: [push]
+on: [ push ]
 
 jobs:
   run-shell-command:
@@ -12,8 +12,11 @@ jobs:
         run: |
           node -v
           npm -v
-      - name: python command
-        run: |
-          import platform
-          print(platform.processor())
-        shell: python
+  run-windows-command:
+      runs-on: windows-latest
+      steps:
+        - name: Windows Powershell
+          run: Get-Location
+        - name: Directory bash
+          run: pwd
+          shell: bash
